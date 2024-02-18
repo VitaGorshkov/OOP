@@ -17,8 +17,6 @@ class Student:
         for course in self.grades.values():
             return(sum(course)/len(course))
     
-    # def add_courses(self, course_name):
-    #     self.finished_courses.append(course_name)
 
     def rate_lecturer(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached and course in self.courses_in_progress:
@@ -43,8 +41,8 @@ class Lecturer(Mentor):
         super().__init__(name, surname)
         self.grades_lecturers = {}
     def avg_grades(self):
-            for course in self.grades_lecturers.keys():
-                return(sum(self.grades_lecturers[course])/len(self.grades_lecturers[course]))
+            for course in self.grades_lecturers.values():
+                return(sum(course)/len(course))
     def __str__(self):
         return f'Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {self.avg_grades()}'
 
@@ -125,13 +123,13 @@ def avg_grages_study(study_list, course):
             if course == courses:
                 grade.append(stady.avg_grade())
 
-    print(grade)
+
     res = sum(grade)/len(grade)
 
     return res
 
 
-print(avg_grages_study(study_list, 'Git'))
+print(avg_grages_study(study_list, 'Python'))
 
 
 lectory_list = [cool_lecturer]
@@ -143,9 +141,9 @@ def avg_grages_lectory(lectory_list, course):
             if course == courses:
                 grade.append(lector.avg_grades())
 
-    print(grade)
+
     res = sum(grade)/len(grade)
 
     return res
 
-print(avg_grages_lectory(lectory_list, 'Git'))
+print(avg_grages_lectory(lectory_list, 'Python'))
